@@ -1,0 +1,418 @@
+/* =========================
+   GLOBAL RESET & VARIABLES
+   ========================= */
+
+:root {
+  --bg-dark: #0b0f1a;
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --primary: #00d2ff;
+  --secondary: #7f00ff;
+  --accent: #ffcc00;
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.75);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+   ========================= */
+
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at top left, rgba(127, 0, 255, 0.35), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(0, 210, 255, 0.35), transparent 45%);
+  animation: hueShift 10s linear infinite alternate;
+}
+
+@keyframes hueShift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(45deg);
+  }
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.navbar nav a {
+  margin-right: 28px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.navbar nav a:hover {
+  color: var(--text-light);
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, var(--accent), #ff8c00);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero {
+  min-height: 100vh;
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.company-hero {
+  min-height: 90vh;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 13px;
+  background: var(--glass-bg);
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+
+.hero-text h1 span {
+  /* 1. Define the gradient */
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  
+  /* 2. Clip the background to the text (Order matters!) */
+  -webkit-background-clip: text; /* Safari / Chrome */
+  background-clip: text;         /* Standard Syntax (Firefox/Edge) */
+  
+  /* 3. Make the text transparent so background shows through */
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Standard fallback */
+  
+  /* 4. Optional: Fixes glitchy rendering on some screens */
+  display: inline-block; 
+}
+
+.hero-text p {
+  margin-top: 20px;
+  max-width: 520px;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+/* =========================
+   HERO ACTIONS & STATS
+   ========================= */
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.hero-btn {
+  padding: 15px 36px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+}
+
+.ghost-btn {
+  padding: 15px 36px;
+  border-radius: 40px;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: white;
+  cursor: pointer;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 45px;
+}
+
+.hero-stats div {
+  text-align: center;
+}
+
+.hero-stats strong {
+  font-size: 22px;
+}
+
+.hero-stats span {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   3D GLASS CARDS
+   ========================= */
+
+.hero-3d {
+  flex: 1;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.glass-card {
+  width: 200px;
+  height: 240px;
+  padding: 22px;
+  background: var(--glass-bg);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  text-align: center;
+  transform-style: preserve-3d;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  will-change: transform;
+}
+
+.glass-card h3 {
+  margin-top: 18px;
+  font-size: 18px;
+}
+
+/* =========================
+   SECTIONS (FLOW / USE / TRUST)
+   ========================= */
+
+.flow,
+.usecases,
+.trust {
+  padding: 90px 60px;
+  text-align: center;
+}
+
+.flow h2,
+.usecases h2,
+.trust h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.flow-grid,
+.use-grid,
+.trust-grid {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.flow-card,
+.use-card,
+.trust-card {
+  padding: 32px;
+  background: var(--glass-bg);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+}
+
+.flow-card span {
+  font-size: 30px;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+/* =========================
+   FINAL CTA
+   ========================= */
+
+.cta-final {
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.cta-final h2 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.cta-final p {
+  margin-bottom: 30px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   RESPONSIVE (MOBILE)
+   ========================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 70px 30px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 44px;
+  }
+
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-3d {
+    margin-top: 40px;
+  }
+
+  .flow,
+  .usecases,
+  .trust {
+    padding: 70px 30px;
+  }
+}
+@media (max-width: 500px) {
+  .navbar nav a {
+    margin-right: 16px;
+    font-size: 14px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-3d {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+.glass-card {
+    /* Existing glass styles (background, blur, etc.) go here... */
+    
+    /* Layout Settings */
+    display: flex;
+    flex-direction: column; /* Stacks icon on top of text */
+    align-items: center;    /* Centers items horizontally */
+    justify-content: center;/* Centers items vertically */
+    text-align: center;
+    padding: 2rem;          /* Adds breathing room */
+}
+
+.card-icon {
+    font-size: 4rem;        /* Makes the emoji HUGE (approx 64px) */
+    margin-bottom: 1rem;    /* Space between icon and text */
+    line-height: 1;         /* Fixes vertical spacing issues */
+    
+    /* Optional: Adds a cool glow to the emoji */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect: The icon pops up slightly when you hover the card */
+.glass-card:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Container Layout */
+.glass-card {
+    /* Existing glass styles (blur, background) keep as is... */
+    
+    display: flex;
+    flex-direction: column; /* Stacks Icon on top of Text */
+    align-items: center;    /* Centers horizontally */
+    justify-content: center;/* Centers vertically */
+    padding: 2.5rem 1.5rem; /* Adds nice spacing inside */
+    text-align: center;
+    gap: 15px;              /* Gap between Icon and Text */
+}
+
+/* The Big Logo Style */
+.card-icon {
+    font-size: 4.5rem;      /* Huge size (approx 72px) */
+    line-height: 1;         /* Prevents extra height spacing */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); /* subtle shadow for depth */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy hover */
+}
+
+/* Text Style */
+h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Hover Effect: Icon pops up */
+.glass-card:hover .card-icon {
+    transform: scale(1.2) translateY(-5px);
+}
